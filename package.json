@@ -1,0 +1,31 @@
+{
+  "name": "PlayersCRUD",
+  "version": "1.0.0",
+  "description": "Players a princípio é uma API de estudo,",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect backend/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielSuhett/PlayersCRUD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielSuhett/PlayersCRUD/issues"
+  },
+  "homepage": "https://github.com/DanielSuhett/PlayersCRUD#readme"
+}

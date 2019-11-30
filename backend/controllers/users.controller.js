@@ -1,29 +1,40 @@
-const mongoose = require("../services/mongodb");
-const PlayerModel = require("./../models/player");
+const mongoose = require("../db/mongodb");
+const PlayerModel = require("../db/models/player");
+var bcrypt = require("bcryptjs");
 
 exports.create = (req, res) => {
-  try {
-    const { name, games } = req.body;
-    const player = new PlayerModel();
+  const { username, games, password, passwordConfirm } = req.body;
 
-    player.name = name;
-    player.games = games;
-    player.create_at = new Date();
+  return PlayerModel.findOne({ username: username }).then(haveusername => {
+    if (password && passwordConfirm) {
+      if (password != passwordConfirm) {
+        res.status(401).send({
+          message: "Senhas Incompatíveis"
+        });
+      } else {
+        const player = new PlayerModel();
 
-    player.save();
+        player.username = username;
+        player.salt = bcrypt.genSaltSync(10);
+        player.password = bcrypt.hashSync(password, player.salt);
+        player.games = games;
+        player.create_at = new Date();
 
-    res.status(201).send({
-      created: true,
-      data: {
-        user_created: player
+        player.save().then(
+          res.status(201).send({
+            created: true,
+            data: {
+              user_created: player
+            }
+          })
+        );
       }
-    });
-  } catch (err) {
-    res.send(500, {
-      created: false,
-      error: err
-    });
-  }
+    } else {
+      res.status(401).send({
+        message: "Confirme sua senha!"
+      });
+    }
+  });
 };
 
 exports.listAll = (req, res) => {
@@ -32,7 +43,7 @@ exports.listAll = (req, res) => {
       console.log(`Error: ` + err);
     } else {
       if (players.length === 0) {
-        res.status(404).send("Not found list");
+        res.status(404).send("Not found players");
       } else {
         res.status(200).send(players);
       }

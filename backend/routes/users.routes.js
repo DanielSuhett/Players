@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/server.controller");
+const controller = require("../controllers/users.controller");
 
 router.post("/create", controller.create);
 
@@ -20,4 +20,4 @@ router.get("/games/:games", controller.listGamePlayers);
 
 router.delete("/:id/games/:games", controller.deleteGame);
 
-module.exports = app => app.use("/persons", router);
+module.exports = app => app.use("/users", router);

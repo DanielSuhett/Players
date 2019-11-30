@@ -1,14 +1,13 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const logger = require("morgan");
 
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-  console.log(`Metodo: ${req.method} em ${req.url}`);
-  next();
-});
+app.use(logger("dev"));
 
-require("./routes/persons.routes")(app);
+require("./routes/users.routes")(app);
+require("./routes/auth.routes")(app);
 
 app.listen(3000);
