@@ -1,6 +1,6 @@
-const mongoose = require("../db/mongodb");
 const PlayerModel = require("../db/models/player");
-var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.login = (req, res) => {
   const { username, password } = req.body;
@@ -9,21 +9,43 @@ exports.login = (req, res) => {
     username: username
   }).then(user => {
     if (!user) {
-      res.send(404, {
+      res.status(404).send({
+        auth: false,
         message: "Usuário não encontrado."
       });
     } else {
       if (bcrypt.hashSync(password, user.salt) == user.password) {
-        res.send(200, {
+        res.status(200).send({
+          auth: true,
           message: "Login efetuado com sucesso!",
-          user: user
+          userToken: signToken(user)
         });
       } else {
-        res.send(401, {
-          login: "error",
+        res.status(401).send({
+          auth: false,
           message: "Senha incorreta!"
         });
       }
     }
   });
+};
+
+exports.logout = (req, res) => {
+  res.status(200).send({ auth: false, token: null });
+};
+
+const signToken = user => {
+  const payloadJWT = {
+    username: user.username,
+    id: user.id
+  };
+
+  const signOptions = {
+    issuer: "Players",
+    subject: user.id,
+    expiresIn: "12h",
+    algorithm: "HS256"
+  };
+
+  return jwt.sign(payloadJWT, process.env.private_key, signOptions);
 };

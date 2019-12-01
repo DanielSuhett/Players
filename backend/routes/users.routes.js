@@ -20,4 +20,4 @@ router.get("/games/:games", controller.listGamePlayers);
 
 router.delete("/:id/games/:games", controller.deleteGame);
 
-module.exports = app => app.use("/users", router);
+module.exports = (app, verifyJWT) => app.use("/users", verifyJWT, router);
