@@ -1,37 +1,77 @@
 const PlayerModel = require("../db/models/player");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const userModel = require("../db/models/user");
 
 exports.login = (req, res) => {
   const { username, password } = req.body;
 
-  PlayerModel.findOne({
-    username: username
-  }).then(user => {
-    if (!user) {
-      res.status(404).send({
-        auth: false,
-        message: "Usuário não encontrado."
-      });
-    } else {
-      if (bcrypt.hashSync(password, user.salt) == user.password) {
-        res.status(200).send({
-          auth: true,
-          message: "Login efetuado com sucesso!",
-          userToken: signToken(user)
+  userModel
+    .findOne({
+      username: username
+    })
+    .then(user => {
+      if (!user) {
+        res.status(404).send({
+          auth: false,
+          message: "Usuário não encontrado."
         });
       } else {
+        if (bcrypt.hashSync(password, user.salt) == user.password) {
+          res.status(200).send({
+            auth: true,
+            message: "Login efetuado com sucesso!",
+            userToken: signToken(user)
+          });
+        } else {
+          res.status(401).send({
+            auth: false,
+            message: "Senha incorreta!"
+          });
+        }
+      }
+    });
+};
+
+exports.createUser = (req, res) => {
+  const { username, password, passwordConfirm } = req.body;
+
+  return userModel.findOne({ username: username }).then(haveusername => {
+    if (haveusername) {
+      res.status(401).send({
+        message: "User already exists"
+      });
+    } else {
+      if (password && passwordConfirm) {
+        if (password != passwordConfirm) {
+          res.status(401).send({
+            message: "Senhas Incompatíveis"
+          });
+        } else {
+          const user = new userModel();
+
+          user.username = username;
+          user.salt = bcrypt.genSaltSync(10);
+          user.password = bcrypt.hashSync(password, user.salt);
+
+          user.create_at = new Date();
+
+          user.save().then(
+            res.status(201).send({
+              created: true,
+              data: {
+                user_created: user
+              }
+            })
+          );
+        }
+      } else {
         res.status(401).send({
-          auth: false,
-          message: "Senha incorreta!"
+          message: "Confirme sua senha!"
         });
       }
     }
   });
-};
-
-exports.logout = (req, res) => {
-  res.status(200).send({ auth: false, token: null });
 };
 
 const signToken = user => {
@@ -42,7 +82,6 @@ const signToken = user => {
 
   const signOptions = {
     issuer: "Players",
-    subject: user.id,
     expiresIn: "12h",
     algorithm: "HS256"
   };

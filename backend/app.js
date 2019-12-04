@@ -12,7 +12,8 @@ const verifyJWT = (req, res, next) => {
   if (!token)
     return res
       .status(401)
-      .send({ auth: false, message: "Você não tem permissão!" });
+      .send({ auth: false, message: "Você não tem permissão!" })
+      .redirect("/");
 
   jwt.verify(token, process.env.private_key, err => {
     if (err) res.status(401).send({ message: err });
@@ -23,6 +24,7 @@ const verifyJWT = (req, res, next) => {
 app.use(logger("dev"));
 
 require("./routes/users.routes")(app, verifyJWT);
+require("./routes/players.routes")(app, verifyJWT);
 require("./routes/auth.routes")(app);
 
 app.listen(process.env.port || 3000);
