@@ -8,17 +8,17 @@
     "dotenv": "^8.2.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
-    "mongoose": "^5.7.12",
-    "morgan": "^1.9.1",
-    "nodemon": "^2.0.1"
+    "mongoose": "^5.7.12"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.1",
+    "morgan": "^1.9.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect backend/app.js"
+    "start": "nodemon --inspect app.js"
   },
   "repository": {
     "type": "git",

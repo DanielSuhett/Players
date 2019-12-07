@@ -1,4 +1,4 @@
-const mongoose = require("../mongodb");
+const mongoose = require("../config/db");
 const { Schema } = mongoose;
 
 const playerSchema = new Schema({

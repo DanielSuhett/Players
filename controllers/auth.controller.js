@@ -1,7 +1,7 @@
-const PlayerModel = require("../db/models/player");
+const PlayerModel = require("../models/player");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const userModel = require("../db/models/user");
+const userModel = require("../models/user");
 
 exports.login = (req, res) => {
   const { username, password } = req.body;

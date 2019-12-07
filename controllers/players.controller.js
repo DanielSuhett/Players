@@ -1,6 +1,6 @@
-const mongoose = require("../db/mongodb");
-const PlayerModel = require("../db/models/player");
-const userModel = require("../db/models/user");
+const mongoose = require("../config/db");
+const PlayerModel = require("../models/player");
+const userModel = require("../models/user");
 const decode = require("jwt-decode");
 
 exports.createPlayer = (req, res) => {
