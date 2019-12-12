@@ -1,0 +1,61 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  border: 1px solid white;
+  /* background-color: purple; */
+  border-radius: 10px;
+  max-width: 300px;
+  float: right;
+  padding: 0px 24px 0 24px;
+  margin: 10% 20% auto;
+}
+
+.generalForm{
+   margin-top: 5%;
+}
+
+.titleForm {
+  padding-top: 20px;
+  margin: 16px;
+  display: flex;
+  color: white;
+  justify-content: center;
+}
+.inputForm{
+  
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.inputField{
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+}
+
+.buttonForm {
+  padding: 10px;
+  margin-top: 4px;
+  padding-bottom: 24px;
+}
+
+.buttonField {
+  height: 30px;
+  width: 70px;
+  font-size: 14px;
+  border-radius: 5px;
+  color: black;
+  font-weight: 500;
+  border: none;
+  background-color: white;
+}
