@@ -1,0 +1,101 @@
+html{
+  color: white;
+}
+
+h1 {
+  flex-direction: column;
+  text-align: center;
+  margin: 0;
+  border-bottom: 2px solid white;
+  padding: 24px 0 24px 0;
+}
+
+.container{ 
+  border: 2px solid white;
+  max-width: 400px;
+  margin: 5% auto;
+}
+
+li {
+  display: inline;
+}
+
+.itemList{
+  background-color: purple;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.itemBox{
+  margin: none;
+  padding: 6px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.buttonItemList{
+  float: right;
+  background: none;
+  border: none;
+  text-decoration: none;
+  outline: none;
+}
+
+.buttonItemList img {
+  width: 20px;
+}
+
+.hiddenButtonText {
+  display: none;
+}
+
+ul {
+  padding: 24px;
+}
+
+.gameBlock {
+  margin-top: 10px;
+}
+
+.gameItem{
+  margin: 5px;
+  background-color: white;
+  color: purple;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.CreateBox{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  color: purple; 
+}
+
+.inputCreate, .inputCreateGames {
+  padding: 6px;
+  text-decoration: none;
+  border: none;
+  color: purple;
+  outline: none;
+}
+
+.inputCreateGames {
+  display: flex;
+  width: 100%;
+}
+
+.inputCreate::placeholder, .inputCreateGames::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: purple;
+  opacity: 1; /* Firefox */
+}
+
+.insertGameBox {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 8px;
+  padding: 6px;
+  display: flex;
+  width: 50%;
+}

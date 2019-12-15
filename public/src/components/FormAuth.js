@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export default function Form(props) {
   return (
@@ -12,7 +12,7 @@ export default function Form(props) {
       </div>
 
       <div className="inputForm buttonForm">
-        <input className="buttonField" type="submit" value="Enviar" />
+        <input className="buttonField" type="submit" value="Enviar" onClick={props.buttonClick} />
       </div>
     </div>
   );
