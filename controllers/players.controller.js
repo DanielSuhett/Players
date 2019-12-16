@@ -11,12 +11,12 @@ exports.createPlayer = (req, res) => {
       )
     })
     .then(user => {
-      const { username, games, userId } = req.body;
+      const { username, games } = req.body;
       const player = new PlayerModel();
 
       player.username = username;
       player.games = games;
-      player.userId = userId;
+      player.userId = decodeTokenUserId(req.headers["x-access-token"]);
       player.create_at = new Date();
 
       player.save();
