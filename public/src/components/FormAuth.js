@@ -12,7 +12,7 @@ export default function Form(props) {
       </div>
 
       <div className="inputForm buttonForm">
-        <input className="buttonField" type="submit" value="Enviar" onClick={props.buttonClick} />
+        <input className="buttonField" type="submit" value="Enviar" onSubmit={props.buttonClick} />
       </div>
     </div>
   );

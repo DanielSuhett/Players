@@ -1,19 +1,29 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
+import { isAuth } from '../services/auth';
 
 export const Routes = () => {
+  function PrivateRoute ({component: Component, authenticated, ...rest}) {
+    return (
+      <Route
+        {...rest}
+        render={(props) => isAuth === true
+          ? <Component {...props} />
+          : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+      />
+    )
+  }
+
   return(
     <Switch>
-
-      //define home to private route
-      <Route path="/home">
-        <Home />
-      </Route>
-
+      <PrivateRoute path='/home' component={Home} />
       <Route path="/login">
-        <Login />
+        { isAuth 
+          ? <Home/> 
+          : <Login/> 
+        }
       </Route>
 
       <Route>
