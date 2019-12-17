@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
-// import Login from './pages/Login/Login';
-import Home from './pages/Home/Home';
+import '../public/index.css';
+import { Routes } from './services/routes'
+import { BrowserRouter } from "react-router-dom";
+
 
 ReactDOM.render(
-  // <Login/>,
-  <Home/>,
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>,
   document.getElementById('root')
 );
