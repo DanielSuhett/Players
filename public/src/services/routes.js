@@ -5,26 +5,24 @@ import Home from '../pages/Home/Home';
 import { isAuth } from '../services/auth';
 
 export const Routes = () => {
-  function PrivateRoute ({component: Component, authenticated, ...rest}) {
+  function PrivateRoute({ component: Component, ...rest }) {
+    console.log(isAuth());
     return (
-      <Route
+            <Route
         {...rest}
-        render={(props) => isAuth === true
-          ? <Component {...props} />
-          : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+        render={(props) => isAuth()
+          ? (<Component {...props} /> )
+          : (<Redirect to={{ pathname: '/singin', state: { from: props.location } }} />
+          )
+        }
       />
     )
   }
 
-  return(
+  return (
     <Switch>
       <PrivateRoute path='/home' component={Home} />
-      <Route path="/login">
-        { isAuth 
-          ? <Home/> 
-          : <Login/> 
-        }
-      </Route>
+      <Route path="/singin" component={Login} />
 
       <Route>
         <h1>Page not found</h1>

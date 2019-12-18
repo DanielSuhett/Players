@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './assets/home.css';
 import List from '../../components/List'
 import NewPlayer from '../../components/NewPlayer';
+import { logout } from '../../services/auth';
+import Login from '../Login/Login';
+
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,7 +20,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Players</h1>
+        <h1>Players <button className="logoutButton" onClick={() => { logout(this.props); this.props.history.push ("/singin"); } }>Logout</button></h1>
+        
         <ul>
           <NewPlayer />
           {this.state.list.map(item => {

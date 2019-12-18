@@ -1,14 +1,18 @@
-export const TOKEN_KEY = "key"
-const getToken = (token) => { localStorage.getItem(token) };
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-export const Login = (token) => {
+export const TOKEN_KEY = "key"
+
+export const getToken = (token) => { localStorage.getItem(token) };
+
+export const setAuth = (token) => {
     localStorage.setItem(TOKEN_KEY, token);
 };
 
 export const isAuth = () => {
-    getToken(TOKEN_KEY) != null;
+    return localStorage.getItem(TOKEN_KEY) != null;
 };
 
-export const logout = () => {
-    localStorage.removeItem(TOKEN_KEY);
+export const logout = (props) => {
+    localStorage.clear(TOKEN_KEY);
 }

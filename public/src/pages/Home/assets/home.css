@@ -99,3 +99,13 @@ ul {
   display: flex;
   width: 50%;
 }
+
+.logoutButton {
+  background: none;
+  color: white;
+  border: 1px solid purple;
+  padding: 8px;
+  float: right;
+  margin: 5px auto;
+  border-radius: 5px;
+}
