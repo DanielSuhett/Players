@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './assets/login.css';
-import API from '../../services/api';
-import { setAuth, isAuth } from '../../services/auth'
+import '../../css/login.css';
+import API from '../services/api';
+import { setAuth, isAuth } from '../services/auth'
 import { Redirect } from 'react-router-dom';
-import NavHeader from '../../components/NavHeader';
+import NavHeader from '../components/NavHeader';
 
 export default class Login extends Component {
   constructor(props) {

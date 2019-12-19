@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import AddGames from './AddGames'
+import ArrowDown from '/home/daniel/Projects/Players/public/images/arrow-down-purple.png'
+import ArrowUp from '/home/daniel/Projects/Players/public/images/arrow-up-purple.png'
 
 export default class NewPlayer extends Component {
   state = {
@@ -19,7 +21,7 @@ export default class NewPlayer extends Component {
             <input className="inputCreate" type="text" name="username" placeholder="Criar novo player" />
             <button className="buttonItemList"
               onClick={this.change.bind(this)}>
-              <span className="hiddenButtonText">{this.state.createStatus ? imageurl = 'arrow-down-purple.png' : imageurl = 'arrow-up-purple.png'}</span>
+              <span className="hiddenButtonText">{this.state.createStatus ? imageurl = ArrowDown : imageurl = ArrowUp }</span>
               <img alt="arrow to display items" src={imageurl} />
             </button>
 

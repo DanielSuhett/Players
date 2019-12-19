@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
-import Login from '../pages/Login/Login';
-import Home from '../pages/Home/Home';
+import Login from '../pages/Login';
+import Home from '../pages/Home';
 import { isAuth } from './auth';
 import NavHeader from '../components/NavHeader';
 

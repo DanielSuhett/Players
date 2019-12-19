@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Deletepng from '/home/daniel/Projects/Players/public/images/delete.png'
+import Addpng from '/home/daniel/Projects/Players/public/images/add.png'
+
 
 export default class AddGames extends Component {
   state = {
@@ -13,11 +16,11 @@ export default class AddGames extends Component {
           onChange={() => this.gameFieldChanged(index)} placeholder="Adicione um jogo" />
 
         <button className="buttonItemList" onClick={(e) => this.addGameFields(e, this.state.games)} value="Criar">
-          <img alt="sum symbol" src='add.png' />
+          <img alt="sum symbol" src={Addpng} />
         </button>
 
         <button className="buttonItemList" onClick={() => this.removeGameFields(index)} value="Remover">
-          <img alt="delete symbol" src='delete.png' />
+          <img alt="delete symbol" src={ Deletepng } />
         </button>
       </div>
     )

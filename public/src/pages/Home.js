@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './assets/home.css';
-import List from '../../components/List'
-import NewPlayer from '../../components/NewPlayer';
-import { isAuth } from '../../services/auth';
+import '../../css/home.css';
+import List from '../components/List'
+import NewPlayer from '../components/NewPlayer';
+import { isAuth } from '../services/auth';
 import { Redirect } from 'react-router-dom';
-import API from '../../services/api';
-import NavHeader from '../../components/NavHeader';
+import API from '../services/api';
+import NavHeader from '../components/NavHeader';
 
 
 export default class Home extends Component {

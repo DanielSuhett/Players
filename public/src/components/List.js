@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ArrowDown from '/home/daniel/Projects/Players/public/images/arrow-down.png'
+import ArrowUp from '/home/daniel/Projects/Players/public/images/arrow-up.png'
+
 
 export default class List extends Component {
   state = {
@@ -29,7 +32,7 @@ export default class List extends Component {
           <div className="itemList">
             <li>{item.name}</li>
             <button className="buttonItemList" onClick={this.buttonToggle.bind(this)}>
-              <span className="hiddenButtonText">{ buttonScope ? imageurl = 'arrow-down.png' : imageurl = 'arrow-up.png'}</span>
+              <span className="hiddenButtonText">{ buttonScope ? imageurl = ArrowDown : imageurl = ArrowUp }</span>
               <img alt="arrow to display items" src={imageurl}/>
             </button>
             <div>
