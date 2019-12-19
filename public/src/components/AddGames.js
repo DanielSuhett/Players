@@ -1,42 +1,66 @@
 import React, { Component } from 'react'
 
-class InputGame extends Component {
+export default class AddGames extends Component {
+  state = {
+    game: '',
+    games: [{ game: '' }]
+  }
 
+  gameBox(index) {
+    return (
+      <div className="insertGameBox">
+        <input className="inputCreateGames" type="text" name="username"
+          onChange={() => this.gameFieldChanged(index)} placeholder="Adicione um jogo" />
+
+        <button className="buttonItemList" onClick={(e) => this.addGameFields(e, this.state.games)} value="Criar">
+          <img alt="sum symbol" src='add.png' />
+        </button>
+
+        <button className="buttonItemList" onClick={() => this.removeGameFields(index)} value="Remover">
+          <img alt="delete symbol" src='delete.png' />
+        </button>
+      </div>
+    )
+  }
+
+  gameFieldChanged(index, e) {
+    const newGameFields = this.state.games.map((gamefield, gindex) => {
+      if (index !== gindex)
+        return gamefield;
+      console.log({ ...gamefield, game: e.target.value });
+      return { ...gamefield, game: e.target.value }
+    });
+
+    this.setState({ games: newGameFields })
+  }
+
+  addGameFields(e, games) {
+    e.preventDefault();
+
+    this.setState({
+      'games': games.concat([{ game: '' }])
+    })
+  }
+
+  removeGameFields(index) {
+    this.setState({
+      games: this.state.games.filter((s, gindex) => { return index !== gindex })
+    });
+  }
 
   render() {
     return (
       <div>
-        <div className="insertGameBox">
-          <input className="inputCreateGames" type="text" name="username" placeholder="Adicione um jogo" />
-          <button className="buttonItemList" type="submit" value="Criar">
-            <img src='add.png' />
-          </button>
-        </div>
+        {this.state.games.map((gamefield, index) => {
+          return <span key={index}>{this.gameBox()}</span>
+        })
+        }
+
       </div>
     )
   }
 }
 
-export default class AddGames extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-    }
-  }
-
-  gameButton() {
-    this.setState({ gameButton: this.state.gameButton + 1 })
-  }
-
-  render() {
-      return (
-        <div>
-          <InputGame countGame={this.state.gameButton}/>
-        </div>
-      )
-  }
-}
 
 
 

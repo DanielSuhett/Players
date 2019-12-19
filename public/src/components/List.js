@@ -30,7 +30,7 @@ export default class List extends Component {
             <li>{item.name}</li>
             <button className="buttonItemList" onClick={this.buttonToggle.bind(this)}>
               <span className="hiddenButtonText">{ buttonScope ? imageurl = 'arrow-down.png' : imageurl = 'arrow-up.png'}</span>
-              <img src={imageurl}/>
+              <img alt="arrow to display items" src={imageurl}/>
             </button>
             <div>
               {
