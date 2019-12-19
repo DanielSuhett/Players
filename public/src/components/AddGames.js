@@ -27,7 +27,6 @@ export default class AddGames extends Component {
     const newGameFields = this.state.games.map((gamefield, gindex) => {
       if (index !== gindex)
         return gamefield;
-      console.log({ ...gamefield, game: e.target.value });
       return { ...gamefield, game: e.target.value }
     });
 

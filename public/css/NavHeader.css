@@ -1,0 +1,43 @@
+.navbar{
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid purple;
+}
+
+button {
+  background: none;
+  border-radius: 5px;
+  color: white;
+  border: 0.5px purple solid;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.navTitle {
+  width: 70%;
+  height: 50px;
+  display: inline-flex;
+  font-size: 32px;
+}
+
+.Titletext {
+  margin: auto 10px;
+}
+
+.buttonLogin, .buttonHome {
+  padding: 10px;
+  outline: none;  
+}
+
+.buttonLogin:hover, .buttonHome:hover{
+  background-color: purple;
+  transition-timing-function: ease-in-out;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+
+.buttonBlock{
+  display: flex;
+  float: right;
+}

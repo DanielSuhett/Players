@@ -2,14 +2,6 @@ html{
   color: white;
 }
 
-h1 {
-  flex-direction: column;
-  text-align: center;
-  margin: 0;
-  border-bottom: 2px solid white;
-  padding: 24px 0 24px 0;
-}
-
 .container{ 
   border: 2px solid white;
   max-width: 400px;
@@ -39,6 +31,7 @@ li {
   border: none;
   text-decoration: none;
   outline: none;
+  margin: auto;
 }
 
 .buttonItemList img {

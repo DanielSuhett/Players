@@ -2,13 +2,13 @@ import React from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
-import { isAuth } from '../services/auth';
+import { isAuth } from './auth';
+import NavHeader from '../components/NavHeader';
 
 export const Routes = () => {
   function PrivateRoute({ component: Component, ...rest }) {
-    console.log(isAuth());
     return (
-            <Route
+      <Route
         {...rest}
         render={(props) => isAuth()
           ? (<Component {...props} /> )
@@ -25,7 +25,7 @@ export const Routes = () => {
       <Route path="/singin" component={Login} />
 
       <Route>
-        <h1>Page not found</h1>
+        <NavHeader />
       </Route>
     </Switch>
   )

@@ -1,7 +1,7 @@
 {
-  "name": "PlayersCRUD",
+  "name": "Players",
   "version": "1.0.0",
-  "description": "Players a princípio é uma API de estudo,",
+  "description": "Controle os jogos que você e seus amigos jogam! =D",
   "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,13 +22,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanielSuhett/PlayersCRUD.git"
+    "url": "git+https://github.com/DanielSuhett/Players.git"
   },
   "keywords": [],
   "author": "Daniel Suhett",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DanielSuhett/PlayersCRUD/issues"
+    "url": "https://github.com/DanielSuhett/Players/issues"
   },
-  "homepage": "https://github.com/DanielSuhett/PlayersCRUD#readme"
+  "homepage": "https://github.com/DanielSuhett/Players#readme"
 }
