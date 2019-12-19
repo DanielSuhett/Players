@@ -1,38 +1,35 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import AddGames from './AddGames'
 
 export default class NewPlayer extends Component {
   state = {
-    buttonScope: false
+    createStatus: false
   }
 
-  buttonClick() {
-    this.setState({ buttonScope: !this.state.buttonScope })
-  }
-
-  gameButton(){
+  change() {
+    this.setState({ createStatus: !this.state.createStatus });
 
   }
 
   render() {
+    let imageurl;
     return (
-      <div>
         <div className="itemBox">
           <div className="CreateBox itemList">
             <input className="inputCreate" type="text" name="username" placeholder="Criar novo player" />
-            <button className="buttonItemList" type="submit" value="Criar" onClick={() => this.buttonClick()}>
-              <img src='add.png' />
+            <button className="buttonItemList"
+              onClick={this.change.bind(this)}>
+              <span className="hiddenButtonText">{this.state.createStatus ? imageurl = 'arrow-down-purple.png' : imageurl = 'arrow-up-purple.png'}</span>
+              <img alt="arrow to display items" src={imageurl} />
             </button>
 
+            {
+              this.state.createStatus
+                ? <AddGames />
+                : null
+            }
           </div>
-          {
-            this.state.buttonScope
-              ? <AddGames />
-              : null
-          }
         </div>
-      </div>
     )
   }
-
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './assets/login.css';
 import API from '../../services/api';
-import { setAuth } from '../../services/auth'
+import { setAuth, isAuth } from '../../services/auth'
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor(props) {
@@ -32,27 +33,30 @@ export default class Login extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <form className="generalForm" onSubmit={(e) => this.postLogin(e)} >
-          <h1 className="titleForm">Players</h1>
-          <form>
-            <div className="inputForm">
-              <input className="inputField" type="text" name="username"
-                onChange={(e) => this.setState({ username: e.target.value })} placeholder=" Username" />
-            </div>
+    if(!isAuth())
+      return (
+        <div className="container">
+          <form className="generalForm" onSubmit={(e) => this.postLogin(e)} >
+            <h1 className="titleForm">Players</h1>
+            <form>
+              <div className="inputForm">
+                <input className="inputField" type="text" name="username"
+                  onChange={(e) => this.setState({ username: e.target.value })} placeholder=" Username" />
+              </div>
 
-            <div className="inputForm">
-              <input className="inputField" type="password" name="password"
-                onChange={(e) => this.setState({ password: e.target.value })} placeholder=" Password" />
-            </div>
+              <div className="inputForm">
+                <input className="inputField" type="password" name="password"
+                  onChange={(e) => this.setState({ password: e.target.value })} placeholder=" Password" />
+              </div>
 
-            <div className="inputForm buttonForm">
-              <input className="buttonField" type="submit" value="Enviar" />
-            </div>
+              <div className="inputForm buttonForm">
+                <input className="buttonField" type="submit" value="Enviar" />
+              </div>
+            </form>
           </form>
-        </form>
-      </div>
-    );
+        </div>
+      );
+    else
+      return ( <Redirect to='/home'></Redirect> ) 
   }
 }
