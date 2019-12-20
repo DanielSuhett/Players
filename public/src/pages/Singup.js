@@ -13,18 +13,28 @@ export default class Login extends Component {
     }
   }
 
-  postLogin = async (e, username, password) => {
+  postSingup = async (e, username, password, passwordConfirm) => {
     e.preventDefault();
     try {
       if (!username && !password)
         this.setState({ message: 'Insira dados de login e senha!' });
+      else {
+        if(password && !passwordConfirm)
+          this.setState({ message: 'Confirme sua senha!' });
+        else {
+          try {
+            await API.post("/singup", { username, password, passwordConfirm })
+            const res = await API.post('/singin', { username, password })
+            
+            setAuth(res.data.userToken);
+      
+            this.props.history.push("/home");
+          } catch (error) {
+            this.setState({ message: error })
+          }
 
-      const response = await API.post("/singin", { username, password })
-
-      setAuth(response.data.userToken);
-
-      this.props.history.push("/home");
-
+        }
+      }
     } catch (error) {
       this.setState({ message: error });
     }
@@ -33,7 +43,7 @@ export default class Login extends Component {
   render() {
     if (!isAuth())
       return (
-        <FieldsFormInput postLogin={this.postLogin} />
+        <FieldsFormInput postSingup={this.postSingup} />
       );
     else
       return (<Redirect to='/home'></Redirect>)

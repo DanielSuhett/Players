@@ -17,10 +17,11 @@ import { logout } from '../services/auth';
       <div className="navbar">
         <span className="navTitle"><p className="Titletext">Players</p></span>
         <div className="buttonBlock">
-            <button className="buttonHome" onClick={() => this.nextPath('/home') }>Home</button>
+
             { this.props.ToggleAuth === 'logout' 
               ? <button className="buttonLogin" onClick={() => { logout(); return this.nextPath('/singin') } }>Logout</button>
-              : <button className="buttonLogin" onClick={() => this.nextPath('/singin') }>Login</button> 
+              : <span><button className="buttonHome" onClick={() => this.nextPath('/singup') }>Sing Up</button>
+              <button className="buttonLogin" onClick={() => this.nextPath('/singin') }>Login</button></span>
             }
         </div>
       </div>
