@@ -17,37 +17,33 @@ export default class Home extends Component {
     };
   };
 
-  async componentDidMount() {
-    try {
-      const res = await API.get('/players');
-      for (const data of res.data) {
-        const userdata = { name: data.username, games: data.games };
-        this.setState({ data: [...data, userdata] });
-      };
-    } catch (error) {
-      this.setState({ data: [] });
-    }
+  async getPlayers() {
+    const res = await API.get('/players');
+      this.setState({ data: res.data });
   }
+
+
+  componentDidMount() { this.getPlayers() }
 
   render() {
     const ToggleAuth = isAuth() ? 'logout' : 'login'
     return this.state.redirect
       ? <Redirect to='/singin'></Redirect>
-      : <div>
-        <NavHeader  ToggleAuth={ToggleAuth} />
+      : <div><NavHeader ToggleAuth={ToggleAuth} />
         <div className="container">
-          <ul>
-            <NewPlayer />
+          <div className="containerCreate"><NewPlayer handleUpdateList={() => this.getPlayers()} /></div>
+          <div className="containerList">
             {
-              this.state.data
-                ? this.state.data.map(item => {
-                  return <List key={item.name} item={item} />
+              this.state.data.length
+                ?
+
+                this.state.data.map((item, index) => {
+                  return <List  key={index} item={item} />
                 })
                 : null
             }
-          </ul>
+          </div>
         </div>
       </div>
-
   }
 } 

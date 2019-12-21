@@ -4,9 +4,6 @@ import {withRouter} from 'react-router-dom';
 import { logout } from '../services/auth';
 
  class navHeader extends Component {
-   constructor(props){
-     super(props); 
-   }
 
   nextPath(path) {
     this.props.history.push(path);

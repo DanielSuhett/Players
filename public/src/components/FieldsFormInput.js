@@ -17,7 +17,7 @@ export default class FieldsFormInput extends Component {
     return (
       <div>
         <NavHeader />
-        <div className="container">
+        <div className="containerLogin">
           <form className="generalForm" onSubmit={(e) => { 
             const { username, password, passwordConfirm } = this.state;
             this.props.postSingup 
@@ -36,7 +36,7 @@ export default class FieldsFormInput extends Component {
             </div>
 
             {this.props.postSingup
-              ? <div className="inputField"><input className="inputField" type="password" name="password"
+              ? <div className="inputForm"><input className="inputField" type="password" name="password"
                 onChange={(e) => this.setState({ passwordConfirm: e.target.value })} placeholder="Confirm password" /></div>
               : null
             }
