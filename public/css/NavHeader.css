@@ -22,6 +22,7 @@ button {
 }
 
 .Titletext {
+  color: white;
   margin: auto 10px;
 }
 
@@ -32,6 +33,7 @@ button {
 
 .buttonLogin:hover, .buttonHome:hover{
   background-color: purple;
+  color: white;
   transition-timing-function: ease-in-out;
   transition: 0.2s;
   border-radius: 5px;

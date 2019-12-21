@@ -1,15 +1,26 @@
 html{
-  color: white;
+  color: purple;
 }
 
-.container{ 
-  border: 2px solid white;
-  max-width: 400px;
-  margin: 5% auto;
+.containerCreate{
+  width: 50%;
+  border-radius: 10px;
+  max-height: 270px;
+}
+
+.container{
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+}
+.containerList{ 
+  width: 50%;
+  float: right;
 }
 
 li {
   display: inline;
+  color: white;
 }
 
 .itemList{
@@ -42,10 +53,6 @@ li {
   display: none;
 }
 
-ul {
-  padding: 24px;
-}
-
 .gameBlock {
   margin-top: 10px;
 }
@@ -61,21 +68,23 @@ ul {
 
 .CreateBox{
   padding: 10px;
-  border-radius: 10px;
-  background-color: white;
-  color: purple; 
+  background-color: purple;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white; 
 }
 
 .inputCreate, .inputCreateGames {
-  padding: 4px;
-  text-decoration: none;
-  border: none;
+  border-radius: none;
+  border-bottom: 1px solid gray;  
   color: purple;
   outline: none;
 }
 
 .inputCreateGames {
   display: flex;
+  margin: 10px auto 24px;
   width: 100%;
 }
 
@@ -85,8 +94,8 @@ ul {
 }
 
 .insertGameBox {
+  width: 100%;
   border-radius: 10px;
-  margin-top: 8px;
   display: flex;
 }
 
@@ -105,15 +114,20 @@ ul {
 }
 
 .createInputBox{
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
+  padding: 24px;
+  border: 10px solid purple;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: white;
   color: purple; 
 }
 
 .inputCreateGames {
-  border-radius: 10px;
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  font-size: 16px;
+  color: purple;
 }
 
 .buttonSubmit {
@@ -121,7 +135,9 @@ ul {
   color: white;
   padding: 3px;
   font-size: 17px;
-  width: 100%;
-  margin-top: 16px;
+  width: 60%;
+  margin: 10px auto;
+  justify-content: center;
+  display: flex;
   border-radius: 5px;
 }
