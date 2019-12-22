@@ -3,7 +3,7 @@ html{
 }
 
 .containerCreate{
-  width: 50%;
+  width: 40%;
   border-radius: 10px;
   max-height: 270px;
 }
@@ -14,7 +14,7 @@ html{
   display: flex;
 }
 .containerList{ 
-  width: 50%;
+  width: 60%;
   float: right;
 }
 
@@ -67,7 +67,7 @@ li {
 }
 
 .CreateBox{
-  padding: 10px;
+  padding-top: 8px;
   background-color: purple;
   text-align: center;
   border-top-left-radius: 10px;
@@ -88,9 +88,9 @@ li {
   width: 100%;
 }
 
-.inputCreate::placeholder, .inputCreateGames::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.inputCreate::placeholder, .inputCreateGames::placeholder {
   color: purple;
-  opacity: 1; /* Firefox */
+  opacity: 1; 
 }
 
 .insertGameBox {
@@ -115,7 +115,7 @@ li {
 
 .createInputBox{
   padding: 24px;
-  border: 10px solid purple;
+  border: 1px solid purple;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: white;
