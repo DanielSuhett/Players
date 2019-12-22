@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ArrowDown from '/home/daniel/Projects/Players/public/images/arrow-down.png'
-import ArrowUp from '/home/daniel/Projects/Players/public/images/arrow-up.png'
+import ArrowDown from '/home/devsuhett/Projects/Players/public/images/arrow-down.png'
+import ArrowUp from '/home/devsuhett/Projects/Players/public/images/arrow-up.png'
 
 
 export default class List extends Component {
@@ -15,7 +15,7 @@ export default class List extends Component {
           <div key={game} className="gameItem">{game}</div>
         ))
         }
-      </div>
+      </div> 
     );
   }
 

@@ -3,13 +3,16 @@ import API from '../services/api'
 import Addpng from '../../images/add.png'
 import Deletepng from '../../images/delete.png'
 
-
+let id = 0;
 export default class NewPlayer extends Component {
-  state = {
-    name: '',
-    game: '',
-    games: [{ game: '' }],
-    message: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      game: '',
+      games: [{ id: ++id, game: '' }],
+      message: '',
+    }
   }
 
   gameBox(index) {
@@ -23,7 +26,7 @@ export default class NewPlayer extends Component {
           <img alt="add more one" src={Addpng} />
         </button>
 
-        <button className="buttonItemList" onClick={() => this.removeGameFields(index)} value="Remover">
+        <button className="buttonItemList" onClick={(e) => this.removeGameFields(e, index)} value="Remover">
           <img alt="delete symbol" src={Deletepng} />
         </button>
       </div>
@@ -41,32 +44,47 @@ export default class NewPlayer extends Component {
     e.preventDefault();
 
     this.setState({
-      'games': games.concat([{ game: '' }])
+      games: games.concat([{ id: ++id, game: '' }])
     })
   }
 
-  removeGameFields(index) {
-    this.setState({ games: this.state.games.filter((s, gindex) => index !== gindex) });
+  removeGameFields(e, index) {
+    e.preventDefault();
+
+    const new_games = this.state.games.filter((s, gindex) => { return index !== gindex })
+
+    if (new_games.length)
+      this.setState({ games: new_games });
+    else
+      this.setState({ message: 'Não pode haver usuário sem jogos!' })
+
+
   }
 
-  async postPlayer(e) {
+  handleSubmit() {
+    this.setState({
+      name: '',
+      game: '',
+      games: [{ id: 0, game: '' }],
+      message: '',
+    });
+  };
+
+  async postPlayer() {
     const { name } = this.state;
-    const games = this.state.games.map(gamefield => gamefield.game);
+    const games = this.state.games.map(gamefield => { if(gamefield.game != null) return gamefield.game });
     if (!name && !games)
       this.setState({ message: 'Não é possivel inserir um player vazio!' });
     else {
-      if (!games)
-        this.setState({ message: 'Não é possivel inserir um player sem games!' });
-      else {
-        try {
-          await API.post('/players/create-player', { username: name, games: games });
-          this.props.handleUpdateList()
-
-        } catch (error) {
-          alert(error);
-        }
+      try {
+        await API.post('/players/create-player', { username: name, games: games });
+        this.props.handleUpdateList();
+        this.handleSubmit();
+      } catch (error) {
+        alert(error);
       }
     }
+
   }
 
 
@@ -74,15 +92,17 @@ export default class NewPlayer extends Component {
     return (
       <div className="itemBox">
         <div className="CreateBox">
-          <span className="createtext"> Criar novo player</span>
+          <span className="createtext">Criar novo player</span>
         </div>
         <div className="createInputBox">
-          <form onSubmit={(e) => { e.preventDefault(); this.postPlayer() }}>
-            <input className="inputCreateGames" type="text" name="username"
+
+          <form onSubmit={(e) => { e.preventDefault(); this.postPlayer(); }}>
+            <input required={true} className="inputCreateGames" type="text" name="username"
               onChange={(e) => { this.setState({ name: e.target.value }) }} placeholder="Nome do player" />
 
-            {this.state.games.map((gamefield, index) => {
-              return <span key={index}>{this.gameBox(index)}</span>
+            {this.state.games.map((g, index) => {
+
+              return <span key={g.id}>{this.gameBox(index)}</span>
             })
             }
 
