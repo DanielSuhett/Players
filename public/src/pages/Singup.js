@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../css/login.css';
+import '../../public/css/login.css';
 import API from '../services/api';
 import { setAuth, isAuth } from '../services/auth'
 import { Redirect } from 'react-router-dom';

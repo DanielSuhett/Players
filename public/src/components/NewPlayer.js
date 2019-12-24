@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import API from '../services/api'
-import Addpng from '../../images/add.png'
-import Deletepng from '../../images/delete.png'
 
 let id = 0;
 export default class NewPlayer extends Component {
@@ -23,11 +21,11 @@ export default class NewPlayer extends Component {
           onChange={(e) => this.gameFieldChanged(index, e)} placeholder="Insira um jogo" />
 
         <button className="buttonItemList" onClick={(e) => this.addGameFields(e, this.state.games)} value="Criar">
-          <img alt="add more one" src={Addpng} />
+          <img alt="add more one" src="img/add.png" />
         </button>
 
         <button className="buttonItemList" onClick={(e) => this.removeGameFields(e, index)} value="Remover">
-          <img alt="delete symbol" src={Deletepng} />
+          <img alt="delete symbol" src="img/delete.png" />
         </button>
       </div>
     )
@@ -35,7 +33,7 @@ export default class NewPlayer extends Component {
 
   gameFieldChanged(index, e) {
     this.state.games.forEach((gamefield, gindex) => {
-      if (!(index !== gindex))
+      if (index === gindex)
         this.setState({ game: Object.assign(gamefield, { game: e.target.value }) })
     });
   }
@@ -50,15 +48,11 @@ export default class NewPlayer extends Component {
 
   removeGameFields(e, index) {
     e.preventDefault();
-
-    const new_games = this.state.games.filter((s, gindex) => { return index !== gindex })
-
-    if (new_games.length)
-      this.setState({ games: new_games });
-    else
-      this.setState({ message: 'Não pode haver usuário sem jogos!' })
-
-
+    if(this.state.games.length > 1)
+      this.setState(state => ({
+        ...state,
+        games: state.games.filter((g, gindex) => { return index !== gindex })
+      }));
   }
 
   handleSubmit() {
@@ -97,8 +91,8 @@ export default class NewPlayer extends Component {
         <div className="createInputBox">
 
           <form onSubmit={(e) => { e.preventDefault(); this.postPlayer(); }}>
-            <input required={true} className="inputCreateName" type="text" name="username"
-              onChange={(e) => { this.setState({ name: e.target.value }) }} placeholder="Nome do player" />
+            <input className="inputCreateName" type="text"
+              onChange={(e) => { this.setState({ name: e.target.value }) }} value={this.state.name} placeholder="Nome do player" />
 
             {this.state.games.map((g, index) => {
 
