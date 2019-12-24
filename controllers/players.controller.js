@@ -128,6 +128,20 @@ exports.deletePlayer = (req, res) => {
   );
 };
 
+exports.updatePlayer = (req, res) => {
+  PlayerModel.findOneAndUpdate({
+    userId: decodeTokenUserId(req.headers["x-access-token"]),
+    _id: new mongoose.mongo.ObjectID(req.params.id)
+  }, {
+    "$set": { "username": req.body.username, "games": req.body.games }
+  }, (err, player) => {
+    console.log(req.body);
+    if (err) res.status(500).send(err);
+    else res.status(200).send(player);
+
+  });
+}
+
 const decodeTokenUserId = token => {
   return decode(token).id;
 };

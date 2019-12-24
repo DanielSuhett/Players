@@ -57,13 +57,24 @@ li {
   margin-top: 10px;
 }
 
-.gameItem{
-  margin: 5px;
+.gameItem {
+  margin: 0px;
   background-color: white;
   color: purple;
   text-align: center;
   padding: 5px;
   border-radius: 10px;
+}
+
+.gameItemInput{
+  text-align: center;
+  width: 90%;
+  background: none;
+  border: none;
+  border-radius: 0px;
+  color: white;
+  border-bottom: 1px solid white;
+  outline: none;
 }
 
 .CreateBox{
@@ -75,28 +86,35 @@ li {
   color: white; 
 }
 
-.inputCreate, .inputCreateGames {
+.inputCreate, .inputCreateGames, .inputCreateName {
   border-radius: none;
   border-bottom: 1px solid gray;  
   color: purple;
   outline: none;
 }
 
-.inputCreateGames {
+.inputCreateGames, .inputCreateName {
   display: flex;
   margin: 10px auto 24px;
   width: 100%;
 }
 
-.inputCreate::placeholder, .inputCreateGames::placeholder {
+.inputCreate::placeholder, .inputCreateGames::placeholder, .inputCreateName::placeholder {
   color: purple;
   opacity: 1; 
 }
 
 .insertGameBox {
   width: 100%;
-  border-radius: 10px;
   display: flex;
+}
+
+.inputCreateName{
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  font-size: 16px;
+  color: purple;
 }
 
 .logoutButton {
@@ -125,7 +143,7 @@ li {
 .inputCreateGames {
   border: none;
   border-bottom: 1px solid gray;
-  width: 100%;
+  width: 80%;
   font-size: 16px;
   color: purple;
 }
@@ -140,4 +158,26 @@ li {
   justify-content: center;
   display: flex;
   border-radius: 5px;
+}
+
+.ButtonEditList{
+  float: none;
+  padding: 4px 14px;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  margin: 16px auto;
+}
+
+.ButtonEditList img {
+  width: 20px;
+}
+
+.inputEditName {
+  width: 90%;
+  text-align: center;
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
 }

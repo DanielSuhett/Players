@@ -9,6 +9,8 @@ router.get("/:id", controller.findPlayer);
 
 router.delete("/:id", controller.deletePlayer); 
 
+router.put("/:id", controller.updatePlayer)
+
 // Games
 
 router.get("/:game", controller.listGamePlayers); 

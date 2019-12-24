@@ -38,7 +38,7 @@ export default class Home extends Component {
                 ?
 
                 this.state.data.map((item, index) => {
-                  return <List  key={index} item={item} />
+                  return <List handleUpdateList={() => this.getPlayers()}  key={index} item={item} />
                 })
                 : null
             }

@@ -97,7 +97,7 @@ export default class NewPlayer extends Component {
         <div className="createInputBox">
 
           <form onSubmit={(e) => { e.preventDefault(); this.postPlayer(); }}>
-            <input required={true} className="inputCreateGames" type="text" name="username"
+            <input required={true} className="inputCreateName" type="text" name="username"
               onChange={(e) => { this.setState({ name: e.target.value }) }} placeholder="Nome do player" />
 
             {this.state.games.map((g, index) => {

@@ -29,7 +29,7 @@ export const Routes = () => {
       
       <Route>
         <NavHeader />
-        <h1>Page not found :O</h1>
+        <h1>Page not found</h1>
       </Route>
     </Switch>
   )
