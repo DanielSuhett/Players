@@ -22,7 +22,7 @@
 * Adicionar um player
 * Editar um player e seus jogos
 * Remover um player
-* Deslogar de seu usuário
+* Deslogar de seu usuario
 
 ## License
 
